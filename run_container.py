@@ -110,13 +110,13 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
     try:
         # Running HHblits
         runHHBlist = \
-            "singularity exec" + wd + "/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i ./" \
+            "singularity exec " + wd + "/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i ./" \
             + now + "/" + now + "temp_protein.fasta -o ./" + now + "/try-hhlist.txt -oa3m ./" + now + \
             "/try-hhlist.a3m -d " + database + " -cpu 20"
         process = subprocess.Popen(runHHBlist.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
         # Converting MSA to FASTA format
-        parseMSA = "singularity exec" + wd + "/hh-suite_latest.sif  reformat.pl a3m fas ./" + now + \
+        parseMSA = "singularity exec " + wd + "/hh-suite_latest.sif  reformat.pl a3m fas ./" + now + \
                    "/try-hhlist.a3m ./" + now + "/try-hhlist.fas"
         process = subprocess.Popen(parseMSA.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
