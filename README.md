@@ -1,5 +1,6 @@
-<img src="https://i.imgur.com/yRJLVNq.png" alt="B-LORE logo" width="150"/>
-# Team Stockholm 2022 Software Tool
+<img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="B-LORE logo" width="150"/>
+
+# ProMutor
 
 If you team competes in the [**Software & AI** track](https://competition.igem.org/participation/tracks) or wants to
 apply for the [**Best Software Tool** Award](https://competition.igem.org/judging/awards), you **MUST** host all the
