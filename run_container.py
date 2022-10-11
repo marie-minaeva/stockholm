@@ -77,6 +77,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
     """
     # Creating WD
     now = str(datetime.now()).split(".")[1]
+    wd = os.getcwd()
     changeWD = "mkdir " + now
     process = subprocess.Popen(changeWD.split(), stdout=subprocess.PIPE)
     _, _ = process.communicate()
@@ -183,7 +184,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
 
     print("--> We are done")
     # Deleting wd
-    os.chdir("/home/igem/iGEM_software/")
+    os.chdir(wd)
     cleanTemps = "rm -r " + now
     process = subprocess.Popen(cleanTemps, stdout=subprocess.PIPE, shell=True)
     _, _ = process.communicate()
