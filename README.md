@@ -65,6 +65,9 @@ include in the README.
 python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True pfama
 ```
 ## Contributing
+We are open to contributions from anyone! Please let us know via an issue if you find a problem with our design or would like to request a feature.
+If you find some improvements or changes that work for you, consider opening a pull request with them!
+
 State if you are open to contributions and what your requirements are for accepting them.
 
 For people who want to make changes to your project, it's helpful to have some documentation on how to get started.
