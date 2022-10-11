@@ -84,7 +84,6 @@ def parse_msa(wd):
         temp = value
         for p in pos:
             temp = value[:p] + temp[p + 1:]
-        print(len(temp))
         seqs[key] = temp
     # Writing resulting MSA to file
     with open(wd + "/" + wd + ".fasta", "w") as output_handle:
