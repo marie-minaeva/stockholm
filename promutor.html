@@ -87,7 +87,7 @@
           properties (e.g. stability). They are used to rank mutants and select the most advantageous ones (those with
           the highest evolutionary score among others). For more information regarding the parameter choice please consult
           our <a href="https://gitlab.igem.org/2022/software-tools/stockholm/-/blob/main/README.md" target="_blank">documentation</a>
-          as well as our <a href="#" target="_blank">tutorial</a> on how to use ProMutor.</p>
+          as well as our <a href="https://2022.igem.wiki/stockholm/software#tag3" target="_blank">tutorial</a> on how to use ProMutor.</p>
 
     </div>
 
@@ -197,7 +197,7 @@ Ex.: > Sample_Protein."
               id="mutation_mandatory"
               name="mandatory_mutation"
               maxlength="100"
-              placeholder="Ex.: 54, 58 (let empty if no priorities)."
+              placeholder="Ex.: 54, 58 (leave empty if no priorities)."
             ></textarea>
           </div>
           <div class="col-md-6"></div>
@@ -313,7 +313,7 @@ Ex.: > Sample_Protein."
 
       <div class="container-fluid p-5 background-clear">
         <p>Nota bene: The calculations might take several minutes, please do not quit the page in order to receive your results below.</p>
-        <button type="button" class="btn btn-secondary" id="JSON-btn">Generate the mutants</button>
+        <button type="button" class="btn btn-secondary" id="JSON-btn">Run</button>
         <a href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb#scrollTo=kOblAo-xetgx" target="_blank"><button type="button" class="btn btn-secondary"><img src="https://static.igem.wiki/teams/4214/wiki/software/collab.png"> AlphaFold</button></a>
       </div>
 
@@ -671,7 +671,7 @@ Ex.: > Sample_Protein."
                 // script DISPLAY SEQUENCE
                 var display_seq = document.createElement('button');
                 display_seq.classList.add("btn", "btn-secondary");
-                display_seq.innerHTML = 'Show me the value';
+                display_seq.innerHTML = 'Show sequence';
                 div_button.appendChild(display_seq);
 
                 display_seq.onclick = function() {
