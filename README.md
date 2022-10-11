@@ -1,3 +1,4 @@
+<img src="https://i.imgur.com/yRJLVNq.png" alt="B-LORE logo" width="150"/>
 # Team Stockholm 2022 Software Tool
 
 If you team competes in the [**Software & AI** track](https://competition.igem.org/participation/tracks) or wants to
