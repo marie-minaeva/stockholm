@@ -22,7 +22,10 @@ However, consider the possibility that whoever is reading your README is a novic
 specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a
 specific context like a particular programming language version or operating system or has dependencies that have to be
 installed manually, also add a Requirements subsection.
-
+git clone https://gitlab.igem.org/2022/software-tools/stockholm.git
+cd stockholm
+singularity pull docker://elodielaine/gemme:gemme
+singularity pull docker://soedinglab/hh-suite:latest
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
