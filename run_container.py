@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import argparse
+import glob
 
 
 def parse_output(data):
@@ -104,14 +105,13 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
             temp = SeqIO.SeqRecord(protein, id="WT", name="", description="")
             SeqIO.write(temp, output_handle, "fasta")
         fasta_sequence = "./" + now + "/" + now + "temp_protein.fasta"
-
     # Constructing and parsing MSA
     print("--> Running HHBlits")
     try:
         # Running HHblits
         runHHBlist = \
-            "singularity exec " + wd + "/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i ./" \
-            + now + "/" + now + "temp_protein.fasta -o ./" + now + "/try-hhlist.txt -oa3m ./" + now + \
+            "singularity exec " + wd + "/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i " + \
+        fasta_sequence + " -o ./" + now + "/try-hhlist.txt -oa3m ./" + now + \
             "/try-hhlist.a3m -d " + database + " -cpu 20"
         process = subprocess.Popen(runHHBlist.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
@@ -154,7 +154,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
             process = subprocess.Popen(runGEMMEmut.split(), stdout=subprocess.PIPE)
             _, _ = process.communicate()
             # Parsing outputs
-            with open("WT_normPred_evolCombi.txt", "r") as f:
+            with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
                 lines = f.readlines()
                 lines = [i.split(" ") for i in lines[1:]]
             output["mutant_predictions"] = \
@@ -165,7 +165,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
             process = subprocess.Popen(runGEMMEscreen.split(), stdout=subprocess.PIPE)
             _, _ = process.communicate()
             # Parsing outputs
-            with open("WT_normPred_evolCombi.txt", "r") as f:
+            with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
                 lines = f.readlines()
                 lines = [i.split(" ") for i in lines[1:]]
             x, y, z = parse_output({i[0][1:-1]: " ".join(i[1:-1]) for i in lines})
@@ -176,7 +176,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
         process = subprocess.Popen(runGEMMEscreen.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
         # Parsing outputs
-        with open("WT_normPred_evolCombi.txt", "r") as f:
+        with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
             lines = f.readlines()
             lines = [i.split(' ') for i in lines[1:]]
         x, y, z = parse_output({i[0][1:-1]: " ".join(i[1:-1]) for i in lines})
