@@ -2,7 +2,8 @@
 
 # ProMutor
 
-\textbf{Pro}tein \textbf{M}utant genera\textbf{tor} \\
+**Pro**tein **M**utant genera**tor** 
+
 A platform for generating advantageous point mutants based on explicit modelling of evolutionary history.
 
 
