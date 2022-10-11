@@ -110,13 +110,13 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
     try:
         # Running HHblits
         runHHBlist = \
-            "singularity exec /home/igem/iGEM_software/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i ./" \
+            "singularity exec" + wd + "/hh-suite_latest.sif hhblits -e 1e-10 -i 1 -p 40 -b 1 -B 20000 -i ./" \
             + now + "/" + now + "temp_protein.fasta -o ./" + now + "/try-hhlist.txt -oa3m ./" + now + \
             "/try-hhlist.a3m -d " + database + " -cpu 20"
         process = subprocess.Popen(runHHBlist.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
         # Converting MSA to FASTA format
-        parseMSA = "singularity exec /home/igem/iGEM_software/hh-suite_latest.sif  reformat.pl a3m fas ./" + now + \
+        parseMSA = "singularity exec" + wd + "/hh-suite_latest.sif  reformat.pl a3m fas ./" + now + \
                    "/try-hhlist.a3m ./" + now + "/try-hhlist.fas"
         process = subprocess.Popen(parseMSA.split(), stdout=subprocess.PIPE)
         _, _ = process.communicate()
@@ -140,16 +140,16 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
 
     # Running evolutionary score calculations
     print("--> Running GEMME")
-    runGEMMEscreen = "singularity exec /home/igem/iGEM_software/gemme_gemme.sif python2.7 /opt/GEMME/gemme.py " \
+    runGEMMEscreen = "singularity exec " + wd + "/gemme_gemme.sif python2.7 /opt/GEMME/gemme.py " \
                      + now + ".fasta -r input -f " + now + ".fasta"
     # Changing wd
-    path = "/home/igem/iGEM_software/" + now + "/"
+    path = wd + "/" + now + "/"
     os.chdir(path)
     try:
         # Prediction mode
         if pos != "0":
             # Running calculations
-            runGEMMEmut = "singularity exec /home/igem/iGEM_software/gemme_gemme.sif python2.7 /opt/GEMME/gemme.py " + \
+            runGEMMEmut = "singularity exec " + wd + "/gemme_gemme.sif python2.7 /opt/GEMME/gemme.py " + \
                           now + ".fasta -r input -f " + now + ".fasta -m " + "./" + now + "for_gemme.txt"
             process = subprocess.Popen(runGEMMEmut.split(), stdout=subprocess.PIPE)
             _, _ = process.communicate()
