@@ -7,6 +7,7 @@ import os
 import numpy as np
 import pandas as pd
 from datetime import datetime
+import argparse
 
 
 def parse_output(data):
@@ -68,7 +69,7 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
         Keys:
             - 'nc' : defaultdict
             - 'prot' : defaultdict
-            -  'mutant_predictions' : dict
+            - 'mutant_predictions' : dict
 
         Ex.: {'nc': defaultdict(<class 'str'>, {}), 'prot': defaultdict(<class 'str'>, {'M1L': 'LAWFALYLLSLLWATASTQT'}),
         'mutant_predictions': {'V28I,I57V,M97L': -1.2911568830377, 'V28I,I57V': -0.867803185985955,
@@ -187,3 +188,26 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
     process = subprocess.Popen(cleanTemps, stdout=subprocess.PIPE, shell=True)
     _, _ = process.communicate()
     return output
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Process input arguments.')
+    parser.add_argument('type_inp', type=str,
+                        help='Type of input. Either "nucleotide" or "protein"')
+    parser.add_argument('fasta', type=str,
+                        help='Input sequence')
+    parser.add_argument('pos', type=str,
+                        help='Comma separated list of positions to be mutated')
+    parser.add_argument('matrix', type=str, default="Blosum62",
+                        help='Substitution matrix to be used. \n Options: "Blosum62", "Blosum80", "Blosum45", \n\t '
+                             '"Blosum50", "Blosum90", "Pam30", "Pam90", "Pam250"')
+    parser.add_argument('preserve', type=str, default="True",
+                        help='Whether the closest (True) or the furthest (False) amino acid substituent is used')
+    parser.add_argument('db', metavar="database", type=str, default="uniclust",
+                        help='Database to be used for creating multiple sequence alignment (MSA)')
+    parser.add_argument('--mand', metavar="mandatory_mutation", type=str, nargs="?",
+                        help='Comma separated list of positions ALWAYS to be mutated')
+    parser.add_argument('--num', metavar="number_of_mutant", type=str, nargs="?",
+                        help='Maximal number of mutations per sequence')
+    args = parser.parse_args()
+    print(args)
+    print(run(type_inp=args.type_inp, fasta_sequence=args.fasta, pos=args.pos, matrix=args.matrix, preserve=args.preserve, database=args.db, mandatory_mutation=args.mand, number_of_mutant=args.num))
