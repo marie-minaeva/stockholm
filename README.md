@@ -26,6 +26,12 @@ git clone https://gitlab.igem.org/2022/software-tools/stockholm.git
 cd stockholm
 singularity pull docker://elodielaine/gemme:gemme
 singularity pull docker://soedinglab/hh-suite:latest
+
+### Database Installation
+mkdir ./uniclust
+cd uniclust/
+wget  https://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/pfamA_35.0.tar.gz
+tar xvfz pfamA_35.0.tar.gz
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
