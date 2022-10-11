@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProMutor</title>
+    <link rel="icon" href="https://static.igem.wiki/teams/4214/wiki/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="mystyle_software.css" />
+
+    <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&amp;display=swap'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script><!--score figure-->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+  </head>
+
+  <body id="font">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+      <div class="container-fluid">
+
+        <!----GIF!!! TEAM NAME ---->
+        <div class="header-item item-left" style="padding-left: 6%;">
+          <a class="navbar-brand" href="https://2022.igem.wiki/stockholm/index.html">
+            <img class="static-gif bg-light" src="https://static.igem.wiki/teams/4214/wiki/experiments/attributions/menubar/igem-website.png" style="width:150px;">
+            <img class="active-gif" src="https://static.igem.wiki/teams/4214/wiki/experiments/attributions/menubar/igem-website.gif" style="width:150px;">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 6%; padding-right: 3%;">
+
+          <!----To the Right ---->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li>
+              <div class="d-flex">
+                <div class="center">
+                  <button id="font-style" type="button" class="btn dyslexic">Dyslexic friendly</button>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="d-flex">
+                <div class="form-check form-switch center">
+                  <label class="form-check-label" for="lightSwitch">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+                      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                    </svg>
+                  </label>
+                  <input class="form-check-input input" type="checkbox" id="lightSwitch"/>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="py-5 mb-5" id="header" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%),url(https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png);">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-lg-12">
+            <h1 class="display-4 text-white">ProMutor</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--DESCRIPTION for client-->
+    <div class="container-fluid p-5">
+      <p style="font-size:25px;">ProMutor is platform for generating advantageous point mutants based on explicit modelling
+          of evolutionary history.</p>
+      <p>Here, the effect of suggested mutations is evaluated by predicting their outcomes based on explicit modelling
+          of the evolutionary history of natural sequences. The resulting multiple-sequence-alignment-based conservation
+          scores \(\Delta \Delta E\) quantify how likely each of the 19 substitutions are in terms of what has been observed in the
+          evolutionary record, with \(\Delta \Delta E \approx 0\) corresponding to very conservative substitutions
+          (have minor effect on protein structure) and the lower \(\Delta \Delta E\) is, the more likely those mutations
+          disrupt protein's structure. Note, that one should compare scores between mutants with different numbers of
+          introduced mutations. In addition, scores should not be interpreted as a quantitative measure of protein's
+          properties (e.g. stability). They are used to rank mutants and select the most advantageous ones (those with
+          the highest evolutionary score among others). For more information regarding the parameter choice please consult
+          our <a href="https://gitlab.igem.org/2022/software-tools/stockholm/-/blob/main/README.md" target="_blank">documentation</a>
+          as well as our <a href="#" target="_blank">tutorial</a> on how to use ProMutor.</p>
+
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-10">
+
+      <div class="container-fluid p-5 background-clear">
+        <h4>Sequence type</h4>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            id="DNA"
+            type="radio"
+            name="type_inp"
+            value="nucleotide"
+            checked
+          />
+          <label class="form-check-label" for="DNA"> DNA </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            id="Protein"
+            type="radio"
+            name="type_inp"
+            value="protein"
+          />
+          <label class="form-check-label" for="Protein"> Protein </label>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5">
+        <h4>Insert your sequence</h4>
+
+        <div class="row">
+          <div class="col">
+            <label for="formFile" class="form-label"
+              >Choose file to upload</label
+            >
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              name="fasta_file"
+              accept=".fasta, .fa, .faa, .fna, .ffn"
+            />
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class="col mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              > or paste a sequence</label>
+            <textarea
+              class="form-control"
+              type="text"
+              name="fasta_sequence"
+              id="fasta_sequence"
+              rows="10"
+              placeholder="Your sequence must start with a [>] sign
+Ex.: > Sample_Protein."
+
+            ></textarea>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5 background-clear">
+        <h4>At what positions do you want to generate mutations?</h4>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >At what positions do you want to insert mutation(s)?<br>
+              <i>Put \(0\) for screening mode (scoring all possible point mutations)</i></label
+            >
+            <textarea
+              class="form-control"
+              type="text"
+              id="mutation_position"
+              name="pos"
+              required
+              minlength="1"
+              maxlength="100"
+              placeholder="Ex.: 12, 54, 58 or 0."
+            ></textarea>
+          </div>
+          <div class="col-md-6"></div>
+          <p></p>
+        </div>
+
+
+        <div class="row">
+          <div class="col mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >At what position do you ALWAYS want to insert a mutation? <br> (Select from the above mentioned
+                positions)</label>
+            <textarea
+              class="form-control"
+              type="text"
+              id="mutation_mandatory"
+              name="mandatory_mutation"
+              maxlength="100"
+              placeholder="Ex.: 54, 58 (let empty if no priorities)."
+            ></textarea>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5">
+        <h4>What is the maximum number of mutations to include per mutant?</h4>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Should be only 1 integral number or empty</label
+            >
+            <textarea
+              class="form-control"
+              type="text"
+              id="number_of_mutant"
+              name="number_of_mutant"
+              required
+              minlength="1"
+              maxlength="100"
+              placeholder="Ex.: 5."
+            ></textarea>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5 background-clear">
+        <h4>Do you expect a preserved or disrupted structure?</h4>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            id="preserved"
+            type="radio"
+            name="preserve"
+            value="True"
+            checked
+          />
+          <label class="form-check-label" for="preserved"> Preserved </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            id="disrupted"
+            type="radio"
+            name="preserve"
+            value="False"
+          />
+          <label class="form-check-label" for="disrupted"> Disrupted </label>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5">
+        <h4>What substitution matrix do you want to use?</h4>
+        <p>Default: Blosum62</p>
+
+        <div class="row">
+          <div class="col form-floating">
+            <select
+              class="form-select"
+              name="matrix"
+              id="matrix-select"
+              aria-label="Floating label select example"
+            >
+              <option value="Blosum45">Blosum45</option>
+              <option value="Blosum50">Blosum50</option>
+              <option value="Blosum62" selected>Blosum62</option>
+              <option value="Blosum80">Blosum80</option>
+              <option value="Blosum90">Blosum90</option>
+              <option value="Pam30">Pam30</option>
+              <option value="Pam90">Pam90</option>
+              <option value="Pam250">Pam250</option>
+            </select>
+            <label class="label-dropdown text-black-50" for="floatingSelect">
+              Choose a matrix</label
+            >
+          </div>
+          <div class="col-md-9"></div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-5">
+        <h4>Which sequence database do you want to use?</h4>
+        <p>Note that in general it is better to use a bigger database (UniClust) to get more reliable predictions <br>
+        Default: Uniclust</p>
+
+        <div class="row">
+          <div class="col form-floating">
+            <select
+              class="form-select"
+              name="database"
+              id="database-select"
+              aria-label="Floating label select example"
+            >
+              <option value="uniclust" selected>Uniclust</option>
+              <option value="pdb70">PDB70</option>
+              <option value="pfama">Pfam-A</option>
+              <option value="scop70">SCOP70</option>
+
+            </select>
+            <label class="label-dropdown text-black-50" for="floatingSelect">
+              Choose a database</label
+            >
+          </div>
+          <div class="col-md-9"></div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid p-5 background-clear">
+        <p>Nota bene: The calculations might take several minutes, please do not quit the page in order to receive your results below.</p>
+        <button type="button" class="btn btn-secondary" id="JSON-btn">Generate the mutants</button>
+        <a href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb#scrollTo=kOblAo-xetgx" target="_blank"><button type="button" class="btn btn-secondary"><img src="https://static.igem.wiki/teams/4214/wiki/software/collab.png"> AlphaFold</button></a>
+      </div>
+
+      <!-- display note when sending request-->
+      <p class="container-fluid p-5 background-clear" id="myNote"></p>
+
+
+    <!-- Display the RESULTS -->
+    <div class="container-fluid p-5 background-clear" id="myResults">
+    </div>
+
+
+    <!-- Plotly chart will be drawn inside this DIV -->
+    <div id='myPlot'></div>
+
+    <script>
+    // Return the content of the file only when you have it. Await in next function makes the code wait for the specific content.
+      function readFile(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onload = (res) => {
+            resolve(res.target.result);
+          };
+          reader.onerror = (err) => reject(err);
+
+          reader.readAsText(file);
+        });
+      }
+
+      async function store_JSON() {
+        var formData = new FormData();
+        //retrieve parameters from the for with ID or name.//
+
+        // type_inp
+        formData.append(
+          "type_inp",
+          document.querySelector('input[name="type_inp"]:checked').value
+        );
+
+        // fasta_file (upload option)
+        var file = document.getElementById("formFile").files[0];
+        if (file) {
+            var data_file = await readFile(file);
+            formData.append("fasta_sequence", data_file);
+        }else{
+            // fasta_file (write yourself option) fasta_sequence
+        formData.append(
+          "fasta_sequence",
+          document.getElementById("fasta_sequence").value
+        );
+        }
+
+        // pos
+        formData.append(
+          "pos",
+          document.getElementById("mutation_position").value
+        );
+
+        //mandatory mutation
+        formData.append("mutation_mandatory",
+            document.getElementById("mutation_mandatory").value
+        );
+
+        // number of mutant
+        formData.append(
+          "number_of_mutant",
+          document.getElementById("number_of_mutant").value
+        );
+
+        // preserved or disrupt
+        formData.append(
+          "preserve",
+          document.querySelector('input[name="preserve"]:checked').value
+        );
+
+        // matrix
+        formData.append(
+          "matrix",
+          document.getElementById("matrix-select").value
+        );
+
+        // database
+        formData.append(
+          "database",
+          document.getElementById("database-select").value
+        );
+
+        //2nd part to send to server. // will be able to replace by /igem-software
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://app.promutor.com/igem-software");
+
+        xhr.timeout = 30*60*1000; // time in milliseconds
+        xhr.ontimeout = (e) => {
+          window.alert("Server not responding after 30 minutes");
+        };
+
+        xhr.send(formData);
+        // clean previous results
+          document.getElementById('myResults').innerHTML="";
+          document.getElementById('myPlot').innerHTML="";
+          // Get note after request submitted
+          document.getElementById("myNote").innerHTML = "Your request has been sent. Please wait (do not quit or refresh the page)...";
+        xhr.onreadystatechange = function () {
+          // If the request completed, close the extension popup
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var s = JSON.parse(xhr.responseText)
+
+                console.log(s);
+
+                let keys_args = Object.keys(s.args)
+                let values_args = Object.values(s.args)
+
+                let keys_prot = Object.keys(s.prot)
+                let values_prot = Object.values(s.prot)
+
+                let keys_nc = Object.keys(s.nc)
+                let values_nc = Object.values(s.nc)
+
+                let keys_mutant_predictions = Object.keys(s.mutant_predictions)
+                let values_mutant_predictions = Object.values(s.mutant_predictions)
+
+                // automatic creation of the RESULTS called  div  :
+                const div = document.getElementById('myResults');
+
+                // create div for table:
+                const table_paragraph = document.createElement("h3");
+                const table_paragraph_text = document.createTextNode("The following parameters were selected:");
+                table_paragraph.appendChild(table_paragraph_text);
+
+                div.appendChild(table_paragraph);
+
+                //TABLE
+                let table = document.createElement('table');
+                table.classList.add("sequence");
+                let thead = document.createElement('thead');
+                let tbody = document.createElement('tbody');
+
+                table.appendChild(thead);
+                table.appendChild(tbody);
+
+                // Adding the entire table to the body tag
+                div.appendChild(table);
+
+                // Heading
+                let row_1 = document.createElement('tr');
+                let heading_1 = document.createElement('th');
+                heading_1.innerHTML = "Argument";
+                let heading_2 = document.createElement('th');
+                heading_2.innerHTML = "Chosen";
+
+
+                row_1.appendChild(heading_1);
+                row_1.appendChild(heading_2);
+                thead.appendChild(row_1);
+
+                // 1 sequence
+                let row_2 = document.createElement('tr');
+                let row_2_data_1 = document.createElement('td');
+                row_2_data_1.innerHTML = "Sequence";
+                let row_2_data_2 = document.createElement('td');
+                mySeq = values_args[1].replace(/(.{80})/g, "$&\n")
+                row_2_data_2.innerHTML = mySeq;
+
+                row_2.appendChild(row_2_data_1);
+                row_2.appendChild(row_2_data_2);
+                tbody.appendChild(row_2);
+
+                // 2 Matrix
+                let row_3 = document.createElement('tr');
+                let row_3_data_1 = document.createElement('td');
+                row_3_data_1.innerHTML = "Matrix";
+                let row_3_data_2 = document.createElement('td');
+                row_3_data_2.innerHTML = values_args[2];
+
+                row_3.appendChild(row_3_data_1);
+                row_3.appendChild(row_3_data_2);
+                tbody.appendChild(row_3);
+
+                // 2 Database
+                let row_4 = document.createElement('tr');
+                let row_4_data_1 = document.createElement('td');
+                row_4_data_1.innerHTML = "Database";
+                let row_4_data_2 = document.createElement('td');
+                row_4_data_2.innerHTML = values_args[0];
+
+                row_4.appendChild(row_4_data_1);
+                row_4.appendChild(row_4_data_2);
+                tbody.appendChild(row_4);
+
+                // 4 number of mutant
+                let row_5 = document.createElement('tr');
+                let row_5_data_1 = document.createElement('td');
+                row_5_data_1.innerHTML = "Number of mutant";
+                let row_5_data_2 = document.createElement('td');
+                row_5_data_2.innerHTML = values_args[4];
+
+                row_5.appendChild(row_5_data_1);
+                row_5.appendChild(row_5_data_2);
+                tbody.appendChild(row_5);
+
+                // 5 positions
+                let row_6 = document.createElement('tr');
+                let row_6_data_1 = document.createElement('td');
+                row_6_data_1.innerHTML = "Positions";
+                let row_6_data_2 = document.createElement('td');
+                row_6_data_2.innerHTML = values_args[5];
+
+                row_6.appendChild(row_6_data_1);
+                row_6.appendChild(row_6_data_2);
+                tbody.appendChild(row_6);
+
+                // 6 Preserved
+                let row_7 = document.createElement('tr');
+                let row_7_data_1 = document.createElement('td');
+                row_7_data_1.innerHTML = "Preserved";
+                let row_7_data_2 = document.createElement('td');
+                row_7_data_2.innerHTML = values_args[6];
+
+                row_7.appendChild(row_7_data_1);
+                row_7.appendChild(row_7_data_2);
+                tbody.appendChild(row_7);
+
+                // 6 type_inp
+                let row_8 = document.createElement('tr');
+                let row_8_data_1 = document.createElement('td');
+                row_8_data_1.innerHTML = "Input type";
+                let row_8_data_2 = document.createElement('td');
+                row_8_data_2.innerHTML = values_args[7];
+
+                row_8.appendChild(row_8_data_1);
+                row_8.appendChild(row_8_data_2);
+                tbody.appendChild(row_8);
+
+                const p_score = document.createElement("h3");
+                const p_score_text = document.createTextNode("The mutants created have the following scores:");
+                p_score.appendChild(p_score_text);
+                div.appendChild(p_score);
+
+
+                // Table scores:
+                // const table_score_paragraph = document.createElement("p"); // create content to add to this div
+                // const table_score_paragraph_text = document.createTextNode("The mutants created have the following scores:");
+                // table_paragraph.appendChild(table_score_paragraph_text); // attach the text node to the created paragraph
+
+                // div.appendChild(table_score_paragraph); // attach paragraph element to div element.
+
+                if ("z" in s.mutant_predictions) {
+                  var data = [
+                    {
+                      z: Object.values(s.mutant_predictions.z),
+                      x: Object.values(s.mutant_predictions.x),
+                      y: Object.values(s.mutant_predictions.y),
+                      type: 'heatmap',
+                        colorbar: {"title": "ΔΔE"},
+                        labels: {
+                     "x": "Position",
+                     "y": "Amino Acid Substituent"
+                        },
+                      colorscale: [[0.0, "rgb(49,54,149)"],
+                      [0.1111111111111111, "rgb(69,117,180)"],
+                      [0.2222222222222222, "rgb(116,173,209)"],
+                      [0.3333333333333333, "rgb(171,217,233)"],
+                      [0.4444444444444444, "rgb(224,243,248)"],
+                      [0.5555555555555556, "rgb(254,224,144)"],
+                      [0.6666666666666666, "rgb(253,174,97)"],
+                      [0.7777777777777778, "rgb(244,109,67)"],
+                      [0.8888888888888888, "rgb(215,48,39)"],
+                      [1.0, "rgb(165,0,38)"]]
+                    }
+                  ];
+                  var layout = {
+                        xaxis: {
+                            title: {
+                                text: 'Position'
+                            },
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Amino Acid Substituent'
+                            }
+                        }
+                  };
+                  Plotly.newPlot('myPlot', data, layout);
+                } else {
+
+                  //TABLE
+                  let table_score = document.createElement('table');
+                  table_score.classList.add("sequence");
+                  let thead_score = document.createElement('thead');
+                  let tbody_score = document.createElement('tbody');
+
+                  table_score.appendChild(thead_score);
+                  table_score.appendChild(tbody_score);
+
+                  div.appendChild(table_score);
+
+                  // Heading for score table
+                  let score_row_1 = document.createElement('tr');
+                  let score_heading_1 = document.createElement('th');
+                  score_heading_1.innerHTML = "Mutant";
+                  let score_heading_2 = document.createElement('th');
+                  score_heading_2.innerHTML = "Score";
+
+
+                  score_row_1.appendChild(score_heading_1);
+                  score_row_1.appendChild(score_heading_2);
+                  thead_score.appendChild(score_row_1);
+
+                  // automatic table rows for scores
+                  for(var i = 0; i < keys_mutant_predictions.length; i++) {
+                  let score_row_2 = document.createElement('tr');
+                  let score_row_2_mutant = document.createElement('td');
+                  score_row_2_mutant.innerHTML = keys_mutant_predictions[i];
+                  let score_row_2_data = document.createElement('td');
+                  score_row_2_data.innerHTML = values_mutant_predictions[i];
+
+                  score_row_2.appendChild(score_row_2_mutant);
+                  score_row_2.appendChild(score_row_2_data);
+                  tbody_score.appendChild(score_row_2);
+                  };
+
+                const p_dropdown = document.createElement("h3");
+                const p_dropdown_text = document.createTextNode("Select one of the mutants created and use the available functions bellow:");
+                p_dropdown.appendChild(p_dropdown_text);
+                div.appendChild(p_dropdown);
+
+                // create element dropdown:
+                const dropdown = document.createElement("select");
+                dropdown.id = "mySelect";
+                dropdown.classList.add("btn", "btn-light", "dropdown-toggle");
+                const label = document.createElement("label");
+                const label_text = document.createTextNode("Choose a mutant:")
+                label.appendChild(label_text);
+                dropdown.appendChild(label);
+
+                // AUTOMATIC DROPDOWN
+                    var options = s.prot;
+
+                    for(var i = 0; i < Object.keys(options).length; i++) {
+                        var opt = Object.keys(options)[i];
+                        var el = document.createElement("option");
+                        el.innerHTML = opt;
+                        el.value = Object.values(options)[i];
+                        dropdown.appendChild(el);
+                    }
+                    div.appendChild(dropdown);
+
+                const div_button = document.createElement("div");
+                div_button.classList.add("div_button");
+
+                div.appendChild(div_button);
+
+                // script DISPLAY SEQUENCE
+                var display_seq = document.createElement('button');
+                display_seq.classList.add("btn", "btn-secondary");
+                display_seq.innerHTML = 'Show me the value';
+                div_button.appendChild(display_seq);
+
+                display_seq.onclick = function() {
+                    var e = document.getElementById("mySelect");
+                    var name = e.options[e.selectedIndex].text;
+                    var seq = e.options[e.selectedIndex].value;
+                    var seq_split = seq.replace(/(.{80})/g, "$&\n")
+
+                    const display_p = document.createElement("p");
+                    display_p.classList.add("sequence");
+                    const display_text = document.createTextNode(">" + name + "\n" + seq_split);
+                    display_p.appendChild(display_text);
+
+                    div_button.appendChild(display_p);
+                };
+
+                // script NEW TAB SEQUENCE
+                var display_seq_tab = document.createElement('button');
+                display_seq_tab.classList.add("btn", "btn-secondary");
+                display_seq_tab.innerHTML = 'Open in a new tab';
+                div_button.appendChild(display_seq_tab);
+
+                display_seq_tab.onclick = function() {
+                    var e = document.getElementById("mySelect");
+                    var name = e.options[e.selectedIndex].text;
+                    var seq = e.options[e.selectedIndex].value;
+                    var seq_split = seq.replace(/(.{80})/g, "$&\n")
+
+                    let new_page = window.open("about:blank", "_blank", "width=850,height=500");
+                        new_page.document.write('<html><head><title>Sequence</title><link rel="stylesheet" type="text/css" href= "sequence_page.css"></head><body>',
+                        ">" + name +
+                        "<br>" + seq_split);
+                        new_page.document.close();
+                };
+
+
+                // script DOWNLOAD FASTA (1)
+                var download_fasta = document.createElement('button');
+                download_fasta.classList.add("btn", "btn-secondary");
+                download_fasta.innerHTML = 'Download fasta';
+                div_button.appendChild(download_fasta);
+
+                download_fasta.onclick = function(filename, text) {
+
+                    var e = document.getElementById("mySelect");
+                    var name = e.options[e.selectedIndex].text;
+                    var seq = e.options[e.selectedIndex].value;
+                    var seq_split = seq.replace(/(.{80})/g, "$&\n");
+                    let seq_to_download = ">" + name + "\n" + seq_split;
+                    var text = seq_to_download;
+
+                    var filename = name+".fasta"; //NAME OF THE FILE!
+
+                    var element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    element.setAttribute('download', filename);
+                    element.style.display = 'none';
+
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+
+                };
+
+                // script DOWNLOAD FASTA (ALL)
+                var download_all_fasta = document.createElement('button');
+                download_all_fasta.classList.add("btn", "btn-secondary");
+                download_all_fasta.innerHTML = 'Download every fasta';
+                div_button.appendChild(download_all_fasta);
+
+                download_all_fasta.onclick = function(filename, text) {
+                    let list_to_download = "";
+                    for (let i = 0; i < keys_prot.length; i++) {
+                        list_to_download += ">" + keys_prot[i]+ "\n" + values_prot[i].replace(/(.{80})/g, "$&\n") + "\n";
+                    }
+
+                    var filename = "all_mutant.fasta";
+                    var text = list_to_download;
+
+                    var element2 = document.createElement('a');
+                    element2.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    element2.setAttribute('download', filename);
+                    element2.style.display = 'none';
+
+                    document.body.appendChild(element2);
+                    element2.click();
+                    document.body.removeChild(element2);
+                };
+                };
+
+            } else {
+                const errorMessage = document.createElement('marquee')
+                errorMessage.textContent = `Gah, it's not working!`
+                document.getElementById("myNote").innerHTML = "Connection error occurred. Please check the parameters and try again!";
+                //app.appendChild(errorMessage)
+
+            }
+          }
+        };
+      }
+
+      //activate the function on click with the button "JSON-btn"
+      document.getElementById("JSON-btn").addEventListener(
+        "click",
+        function () {
+          store_JSON();
+        },
+        false
+      );
+    </script>
+
+      </div>
+    </div>
+
+
+    <!--Footer-->
+    <footer class="pt-5 pb-5 py-5 mt-5 bg-dark">
+
+      <div class="container">
+        <div class="row mb-4">
+
+          <div class="col-lg-3 col-xs-12">
+            <a href="https://www.igem.se/" target="_blank"><img src="https://static.igem.wiki/teams/4214/wiki/footer/igemlogocolor.png" class="img-fluid" alt="team logo" width="150px"></a>
+          </div>
+
+          <div class="col-lg-3 col-xs-12">
+            <a href="{{ url_for('index') }}"><img src="https://static.igem.wiki/teams/4214/wiki/footer/igemlogoprojectpallet.png" class="img-fluid" alt="project logo" width="120px"></a>
+          </div>
+
+          <div class="col-lg-1 col-xs-12">
+          </div>
+
+          <div class="col-lg-5 col-xs-12">
+              <p></p>
+
+                  <p class="text-end">Co-authors: <a href="https://www.linkedin.com/in/mariia-minaeva-019615193" target="_blank" title="Visit linkedin">Mariia Minaeva</a> &
+
+                  <a href="https://www.linkedin.com/in/raphael-mauron/" target="_blank" title="Visit linkedin">Raphaël Mauron</a></p>
+
+              <div class="row">
+                <p></p>
+                <p></p>
+              </div>
+
+              <div class="row">
+                <p class="text-end">More about us <a href="https://www.igem.se/" target="_blank">on our website</a><br>info@igem.se</p>
+              </div>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- The following MUST be on every page: license information and link to the repository on gitlab.igem.org -->
+        <div class="row mt-4">
+          <div class="col">
+            <p class="mb-0"><small>The repository used to create this software is available at <a href="https://gitlab.igem.org/2022/software-tools/stockholm.git" target="_blank">gitlab.igem.org/2022/stockholm/software</a>.</small></p>
+
+            <p><small>© 2022 - Content on this site is licensed under a <a class="subfoot" href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">Creative Commons Attribution 4.0 International license</a>.</small></p>
+
+          </div>
+        </div>
+      </div>
+
+    </footer>
+
+
+
+
+    <script src="change_font.js"></script>
+    <script src="switch.js"></script>
+  </body>
+</html>
