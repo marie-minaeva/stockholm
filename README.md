@@ -30,7 +30,7 @@ singularity pull docker://soedinglab/hh-suite:latest
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
 include in the README.
-
+python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True uniclust
 ## Contributing
 State if you are open to contributions and what your requirements are for accepting them.
 
