@@ -8,15 +8,32 @@
 ProMutor is a we-based tool that predicts the effect of suggested mutations based on explicit modelling of the evolutionary history of natural sequences. Given an input sequence, it either generates a complete landscape of protein mutations or predicts an epistatic effect of mutations of interest. It also incorporates mutant sequence generation step as well as provedes direct access to ColabFold notebook for predicting protein structure.
 
 ### Main steps of pipeline
-1. 
+Depending on the selected mode, steps o the pipeline vary. However, both start with the generation o a multiple sequence alignment (MSA).
 
+**Screening mode:**
+
+1. MSA generation.
+2. Mutation effect landsccape generation (using GEMME tool).
+
+**Mutant generation mode:**
+
+1. MSA generation.
+2. Generation of all possible mutants containing desired mutation sites.
+3. Prediction of their effect on protein structure based on evolutionary conservation (GEMME).
+
+As an additional suggested step to procceed with, we propose using AlphaFold 2 or mutant protein structure prediction. We provide direct access to its notebook version ColabFold. 
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew.
-However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing
-specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a
-specific context like a particular programming language version or operating system or has dependencies that have to be
-installed manually, also add a Requirements subsection.
+There are several options of running promutor remotely either using [ProMutor](https://promutor.com/) webpage (does not require any installation) or via downloading `promutor.html` web-form to submit request to the remote compute from a local device.
+
+### Installations required to run ProMutor locally 
+ProMutor is written in python. In addition, it utilises `singularity` for running `hhblits`. 
+
+To run ProMutor locally following tools are needed:
+- `python` v3.9 or higher
+- `singularity`
+
+To use ProMutor, you have to download the repository and pull required containers from the DockerHub as well as install required python packages:
 ```
 git clone https://gitlab.igem.org/2022/software-tools/stockholm.git
 cd stockholm
@@ -25,12 +42,21 @@ singularity pull docker://soedinglab/hh-suite:latest
 pip3 install -r requirements.txt
 ```
 ### Database Installation
+
+For constructing an MSA, `hhlits` tool utilises protein sequence databases. Here we provide commands to install Pfam-A database, however other databases could be easily installed by providing an appropriate link.
 ```
 mkdir ./uniclust
 cd uniclust/
 wget  https://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/pfamA_35.0.tar.gz
 tar xvfz pfamA_35.0.tar.gz
 ```
+**List of available databases**
+- [Uniclust30](https://uniclust.mmseqs.com) [[pub]](https://doi.org/10.1093/nar/gkw1081)
+- [BFD](https://bfd.mmseqs.com) [[pub]](https://doi.org/10.1038/s41592-019-0437-4)
+- [Pfam/SCOP/PDB70/dbCAN](http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/)
+
+In addition, one can build its own database. Please check `hh-suite` [user guide](https://github.com/soedinglab/hh-suite/wiki#building-customized-databases) or more information.
+
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
 usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
