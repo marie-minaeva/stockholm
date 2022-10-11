@@ -27,6 +27,7 @@ git clone https://gitlab.igem.org/2022/software-tools/stockholm.git
 cd stockholm
 singularity pull docker://elodielaine/gemme:gemme
 singularity pull docker://soedinglab/hh-suite:latest
+pip3 install -r requirements.txt
 ```
 ### Database Installation
 ```
