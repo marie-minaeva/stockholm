@@ -1,5 +1,7 @@
 <img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="B-LORE logo" width="150"/>
 
+![Code Coverage](https://img.shields.io/badge/Python-3.10.6-green)
+
 # ProMutor 
 **Pro**tein **M**utant genera**tor** : a platform for generating advantageous point mutants based on explicit modelling of evolutionary history.
 
@@ -58,12 +60,54 @@ tar xvfz pfamA_35.0.tar.gz
 In addition, one can build its own database. Please check `hh-suite` [user guide](https://github.com/soedinglab/hh-suite/wiki#building-customized-databases) or more information.
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
-usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
-include in the README.
+
+### Quick start
+
+#### Running remotely using web-form
+1. Go to [ProMutor](https://promutor.com/) webpage
+2. Fill in te form acccording to tutorials provided 
+    a. [Screening mode](https://2022.igem.wiki/stockholm/software#tag3_1)
+    b. [Mutant Generation mode](https://2022.igem.wiki/stockholm/software#tag3_2)
+
+#### Running remotely using local submition form
+1. Download `promutor.html` file
+2. Open file in any browser
+3. Fill in te form acccording to tutorials provided 
+    a. [Screening mode](https://2022.igem.wiki/stockholm/software#tag3_1)
+    b. [Mutant Generation mode](https://2022.igem.wiki/stockholm/software#tag3_2)
+
+#### Running locally
+1. Clone the repository
+```
+cd stockholm
+```
+2. Run tool locally in Mutant generation mode:
 ```
 python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True pfama
 ```
+3. Run tool locally in Screening mode:
+```
+python3 run_container.py protein example/P27352.fasta 0 Blosum62 True pfama
+```
+### Command line arguments
+
+An command to run ProMutor can be used as follows:
+ython3 cif2fasta.py -i <all_cifs> -o pdb100.fas -c <num_cores> -p pdb_filter.dat
+```
+python3 run_container.py <> example/P27352.fasta 0 Blosum62 True pfama
+```
+Option | Description | Priority | Default value
+:---   | :---        |:---      | :--
+&#x2011;&#x2011;gen&nbsp;*filename(s)*  | Input genotype file(s), all loci should have separate genotype files and specified here (wildcards allowed) | Required    | --
+&#x2011;&#x2011;sample&nbsp;*filename*  | Input sample file | Required | --
+&#x2011;&#x2011;pheno&nbsp;*string*     | Name of the phenotype as it appears in the header of the sample file| Optional | `pheno`
+&#x2011;&#x2011;regoptiom               | If specified, the variance of the regularizer will be optimized, otherwise it will be N(0, σ<sup>2</sup>) where σ is specified by `--reg` | Optional | --
+&#x2011;&#x2011;reg&nbsp;*float*        | Value of the standard deviation (σ) of the regularizer | Optional | 0.01
+&#x2011;&#x2011;pca&nbsp;*int*          | Number of principal components of the genotype to be included as covariates | Optional | 0
+&#x2011;&#x2011;cov&nbsp;*string(s)*    | Name of covariate(s) as they appears in the header of the sample file, multiple covariates can be specified as space-separated strings | Optional | None
+&#x2011;&#x2011;out&nbsp;*directory*    | Name of the output directory where summary statistics will be created | Optional | directory of the genotype files
+&#x2011;&#x2011;prefix&nbsp;*string* | Prefix for the summary statistics files | Optional | `_summary`
+
 ## Contributing
 We are open to contributions from anyone! Please let us know via an issue if you find a problem with our design or would like to request a feature.
 If you find some improvements or changes that work for you, consider opening a pull request with them!
