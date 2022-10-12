@@ -31,7 +31,7 @@ There are several options of running promutor remotely either using [ProMutor](h
 ### Installations required to run ProMutor locally 
 ProMutor is written in python. In addition, it utilises `singularity` for running `hhblits`. 
 
-To run ProMutor locally following tools are needed:
+To run ProMutor locally the following tools are needed:
 - `python` v3.9 or higher
 - `singularity`
 
