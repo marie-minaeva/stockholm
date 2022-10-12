@@ -117,22 +117,19 @@ python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True pfama
 ```
 
 ## Contributing
-We are open to contributions from anyone! Please let us know via an issue if you find a problem with our design or would like to request a feature.
-If you find some improvements or changes that work for you, consider opening a pull request with them!
-
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started.
-Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps
-explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce
-the likelihood that the changes inadvertently break something. Having instructions for running tests is especially
-helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+We are open to any contributions and colaborations. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. 
 
 ## License
 
 [License](LICENSE.txt)
 
 ## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+
+### Acknowledgment
+
+We would like to express our greatest gratitude to our principal technical supervisor Frédéric Mauron who has been of the greatest help on the technical parts of the software creation.
+His availability, knowledge and faith in our project allowed us to bring it to life. More specifically, Mr Mauron guided us throughout the webform-server connection steps. Last but not least, we are remarkably thankful for the server he provided us with for free.
+
+### Authors
+
+[Raphaël Mauron](mailto:raphael.mauron@gmail.com) & [Mariia Minaeva](mailto:minaeva.mav@gmail.com), iGEM Stockholm Team 2022
