@@ -154,22 +154,28 @@ def run(type_inp, fasta_sequence, pos, matrix, preserve, database, mandatory_mut
             process = subprocess.Popen(runGEMMEmut.split(), stdout=subprocess.PIPE)
             _, _ = process.communicate()
             # Parsing outputs
-            with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
-                lines = f.readlines()
-                lines = [i.split(" ") for i in lines[1:]]
-            output["mutant_predictions"] = \
-                dict(sorted({i[0][1:-1]: float(i[1][:-1]) for i in lines}.items(), key=lambda item: item[1]))
+            if len([f for f in glob.glob('*_normPred_evolCombi.txt')]) > 0:
+                with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
+                    lines = f.readlines()
+                    lines = [i.split(" ") for i in lines[1:]]
+                output["mutant_predictions"] = \
+                    dict(sorted({i[0][1:-1]: float(i[1][:-1]) for i in lines}.items(), key=lambda item: item[1]))
+            else:
+                raise FileNotFoundError
         # Screening mode
         else:
             # Running calculations
             process = subprocess.Popen(runGEMMEscreen.split(), stdout=subprocess.PIPE)
             _, _ = process.communicate()
             # Parsing outputs
-            with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
-                lines = f.readlines()
-                lines = [i.split(" ") for i in lines[1:]]
-            x, y, z = parse_output({i[0][1:-1]: " ".join(i[1:-1]) for i in lines})
-            output["mutant_predictions"] = {"x": x, "y": y, "z": z}
+            if len([f for f in glob.glob('*_normPred_evolCombi.txt')]) > 0:
+                with open([f for f in glob.glob('*_normPred_evolCombi.txt')][0], "r") as f:
+                    lines = f.readlines()
+                    lines = [i.split(" ") for i in lines[1:]]
+                x, y, z = parse_output({i[0][1:-1]: " ".join(i[1:-1]) for i in lines})
+                output["mutant_predictions"] = {"x": x, "y": y, "z": z}
+            else:
+                raise FileNotFoundError
     # If too small MSA enable screening mode
     except FileNotFoundError:
         # Running calculations
