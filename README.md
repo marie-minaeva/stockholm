@@ -13,6 +13,7 @@ ProMutor is a web-based tool that predicts the effect of suggested mutations bas
 
 ### Main steps of pipeline
 <img src="https://static.igem.wiki/teams/4214/wiki/software/promutor-scheme.png" alt="Pipeline scheme" width="800">
+
 Depending on the selected mode, steps of the pipeline vary. However, both start with the generation of a multiple sequence alignment (MSA).
 
 **Screening mode:**
