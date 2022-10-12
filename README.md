@@ -2,6 +2,8 @@
 
 ![Code Coverage](https://img.shields.io/badge/Python-3.10.6-green)
 
+
+
 # ProMutor 
 **Pro**tein **M**utant genera**tor** : a platform for generating advantageous point mutants based on explicit modelling of evolutionary history.
 
@@ -45,7 +47,7 @@ pip3 install -r requirements.txt
 ```
 ### Database Installation
 
-For constructing an MSA, `hhlits` tool utilises protein sequence databases. Here we provide commands to install Pfam-A database, however other databases could be easily installed by providing an appropriate link.
+For constructing an MSA, `hhlits` tool utilises protein sequence databases. Here, we provide commands to install Pfam-A database, however other databases could be easily installed by providing an appropriate link.
 ```
 mkdir ./uniclust
 cd uniclust/
@@ -65,14 +67,14 @@ In addition, one can build its own database. Please check `hh-suite` [user guide
 
 #### Running remotely using web-form
 1. Go to [ProMutor](https://promutor.com/) webpage
-2. Fill in te form acccording to tutorials provided 
+2. Fill in the form acccording to tutorials provided 
     a. [Screening mode](https://2022.igem.wiki/stockholm/software#tag3_1)
     b. [Mutant Generation mode](https://2022.igem.wiki/stockholm/software#tag3_2)
 
 #### Running remotely using local submition form
 1. Download `promutor.html` file
 2. Open file in any browser
-3. Fill in te form acccording to tutorials provided 
+3. Fill in the form acccording to tutorials provided 
     a. [Screening mode](https://2022.igem.wiki/stockholm/software#tag3_1)
     b. [Mutant Generation mode](https://2022.igem.wiki/stockholm/software#tag3_2)
 
@@ -91,21 +93,28 @@ python3 run_container.py protein example/P27352.fasta 0 Blosum62 True pfama
 ```
 ### Command line arguments
 
-An command to run ProMutor can be used as follows:
+A command to run ProMutor can be used as follows:
 ```
-python3 cif2fasta.py <type_inp> <fasta> <pos> <matrix> <preserve> <database> --mand string --num string
+python3 cif2fasta.py <type_inp> <fasta> <pos> <matrix> <preserve> <database> --mand <string> --num <string>
 ```
 
 Arguments | Description | Valid value
 :---   | :---    | :--
 type_inp&nbsp;*string*  | Type of input. | *nucleotide* or *protein*    
 fasta&nbsp;*string*  | Input sequence. | -- 
-pos&nbsp;*string*     | Comma separated list of positions to be mutated 
-matrix&nbsp;*string* |  Substitution matrix to be used. |  *Blosum62*, *Blosum80*, *Blosum45*, *Blosum50*, *Blosum90*, *Pam30*, *Pam90* or *Pam250* 
-preserve&nbsp;*string*        | Whether the closest (True) or the furthest (False) amino acid substituent is used | *True* or *False* 
-database&nbsp;*string*          | Database to be used for creating multiple sequence alignment (MSA) | *uniclust*, *pdb70*, *scop70*, *pfama* 
-&#x2011;&#x2011;mand&nbsp;*string*    | Comma separated list of positions ALWAYS to be mutated | -- 
-&#x2011;&#x2011;num&nbsp;*string*    |Maximal number of mutations per sequence | --
+pos&nbsp;*string*     | Comma separated list of positions to be mutated. | -- 
+matrix&nbsp;*string* |  Substitution matrix to be used. |  *Blosum45*, *Blosum50*, *Blosum62*, *Blosum80*, *Blosum90*, *Pam30*, *Pam90* or *Pam250* 
+preserve&nbsp;*string*        | Whether the closest (True) or the furthest (False) amino acid substituent is used. | *True* or *False* 
+database&nbsp;*string*          | Database to be used for creating multiple sequence alignment (MSA). | *uniclust*, *pdb70*, *scop70*, *pfama* 
+&#x2011;&#x2011;mand&nbsp;*string*    | Comma separated list of positions ALWAYS to be mutated. | -- 
+&#x2011;&#x2011;num&nbsp;*string*    |Maximal number of mutations per sequence. | --
+
+**Example:**
+
+Example input `fasta` file is provided in `example/` directory. This simple command will run ProMutor in the Mutant generation mode.
+```
+python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True pfama
+```
 
 ## Contributing
 We are open to contributions from anyone! Please let us know via an issue if you find a problem with our design or would like to request a feature.
