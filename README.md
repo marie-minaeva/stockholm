@@ -1,4 +1,4 @@
-<img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="B-LORE logo" width="800"/>
+<img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="ProMutor" width="800"/>
 
 ![Code Coverage](https://img.shields.io/badge/Python-3.10.6-green)
 
@@ -12,6 +12,7 @@
 ProMutor is a web-based tool that predicts the effect of suggested mutations based on explicit modelling of the evolutionary history of natural sequences. Given an input sequence, it either generates a complete landscape of protein mutations or predicts an epistatic effect of mutations of interest. It also incorporates mutant sequence generation step as well as provides direct access to ColabFold notebook for predicting protein structure.
 
 ### Main steps of pipeline
+<img src="https://static.igem.wiki/teams/4214/wiki/software/promutor-scheme.png" alt="Pipeline scheme" width="800">
 Depending on the selected mode, steps of the pipeline vary. However, both start with the generation of a multiple sequence alignment (MSA).
 
 **Screening mode:**
