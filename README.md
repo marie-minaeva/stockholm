@@ -95,7 +95,7 @@ python3 run_container.py protein example/P27352.fasta 0 Blosum62 True pfama
 
 A command to run ProMutor can be used as follows:
 ```
-python3 cif2fasta.py <type_inp> <fasta> <pos> <matrix> <preserve> <database> --mand <string> --num <string>
+python3 run_container.py <type_inp> <fasta> <pos> <matrix> <preserve> <database> --mand <string> --num <string>
 ```
 
 Arguments | Description | Valid value
