@@ -1,4 +1,4 @@
-<img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="B-LORE logo" width="150"/>
+<img src="https://static.igem.wiki/teams/4214/wiki/home/soft-logo.png" alt="B-LORE logo" width="800"/>
 
 ![Code Coverage](https://img.shields.io/badge/Python-3.10.6-green)
 
@@ -7,10 +7,10 @@
 
 
 ## Description
-ProMutor is a we-based tool that predicts the effect of suggested mutations based on explicit modelling of the evolutionary history of natural sequences. Given an input sequence, it either generates a complete landscape of protein mutations or predicts an epistatic effect of mutations of interest. It also incorporates mutant sequence generation step as well as provedes direct access to ColabFold notebook for predicting protein structure.
+ProMutor is a web-based tool that predicts the effect of suggested mutations based on explicit modelling of the evolutionary history of natural sequences. Given an input sequence, it either generates a complete landscape of protein mutations or predicts an epistatic effect of mutations of interest. It also incorporates mutant sequence generation step as well as provides direct access to ColabFold notebook for predicting protein structure.
 
 ### Main steps of pipeline
-Depending on the selected mode, steps o the pipeline vary. However, both start with the generation o a multiple sequence alignment (MSA).
+Depending on the selected mode, steps of the pipeline vary. However, both start with the generation of a multiple sequence alignment (MSA).
 
 **Screening mode:**
 
@@ -92,21 +92,20 @@ python3 run_container.py protein example/P27352.fasta 0 Blosum62 True pfama
 ### Command line arguments
 
 An command to run ProMutor can be used as follows:
-ython3 cif2fasta.py -i <all_cifs> -o pdb100.fas -c <num_cores> -p pdb_filter.dat
 ```
-python3 run_container.py <> example/P27352.fasta 0 Blosum62 True pfama
+python3 cif2fasta.py <type_inp> <fasta> <pos> <matrix> <preserve> <database> --mand string --num string
 ```
-Option | Description | Priority | Default value
-:---   | :---        |:---      | :--
-&#x2011;&#x2011;gen&nbsp;*filename(s)*  | Input genotype file(s), all loci should have separate genotype files and specified here (wildcards allowed) | Required    | --
-&#x2011;&#x2011;sample&nbsp;*filename*  | Input sample file | Required | --
-&#x2011;&#x2011;pheno&nbsp;*string*     | Name of the phenotype as it appears in the header of the sample file| Optional | `pheno`
-&#x2011;&#x2011;regoptiom               | If specified, the variance of the regularizer will be optimized, otherwise it will be N(0, σ<sup>2</sup>) where σ is specified by `--reg` | Optional | --
-&#x2011;&#x2011;reg&nbsp;*float*        | Value of the standard deviation (σ) of the regularizer | Optional | 0.01
-&#x2011;&#x2011;pca&nbsp;*int*          | Number of principal components of the genotype to be included as covariates | Optional | 0
-&#x2011;&#x2011;cov&nbsp;*string(s)*    | Name of covariate(s) as they appears in the header of the sample file, multiple covariates can be specified as space-separated strings | Optional | None
-&#x2011;&#x2011;out&nbsp;*directory*    | Name of the output directory where summary statistics will be created | Optional | directory of the genotype files
-&#x2011;&#x2011;prefix&nbsp;*string* | Prefix for the summary statistics files | Optional | `_summary`
+
+Arguments | Description | Valid value
+:---   | :---    | :--
+type_inp&nbsp;*string*  | Type of input. | *nucleotide* or *protein*    
+fasta&nbsp;*string*  | Input sequence. | -- 
+pos&nbsp;*string*     | Comma separated list of positions to be mutated 
+matrix&nbsp;*string* |  Substitution matrix to be used. |  *Blosum62*, *Blosum80*, *Blosum45*, *Blosum50*, *Blosum90*, *Pam30*, *Pam90* or *Pam250* 
+preserve&nbsp;*string*        | Whether the closest (True) or the furthest (False) amino acid substituent is used | *True* or *False* 
+database&nbsp;*string*          | Database to be used for creating multiple sequence alignment (MSA) | *uniclust*, *pdb70*, *scop70*, *pfama* 
+&#x2011;&#x2011;mand&nbsp;*string*    | Comma separated list of positions ALWAYS to be mutated | -- 
+&#x2011;&#x2011;num&nbsp;*string*    |Maximal number of mutations per sequence | --
 
 ## Contributing
 We are open to contributions from anyone! Please let us know via an issue if you find a problem with our design or would like to request a feature.
@@ -121,6 +120,10 @@ explicit. These instructions could also be useful to your future self.
 You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce
 the likelihood that the changes inadvertently break something. Having instructions for running tests is especially
 helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+
+## License
+
+[License](LICENSE.txt)
 
 ## Authors and acknowledgment
 Show your appreciation to those who have contributed to the project.
