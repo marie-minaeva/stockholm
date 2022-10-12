@@ -132,4 +132,4 @@ His availability, knowledge and faith in our project allowed us to bring it to l
 
 ### Authors
 
-[Raphaël Mauron](mailto:raphael.mauron@gmail.com) & [Mariia Minaeva](mailto:minaeva.mav@gmail.com), iGEM Stockholm Team 2022
+[Raphaël Mauron](https://www.linkedin.com/in/raphael-mauron/) & [Mariia Minaeva](https://www.linkedin.com/in/mariia-minaeva-019615193), iGEM Stockholm Team 2022
