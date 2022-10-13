@@ -43,6 +43,8 @@ def igem_form():
     type_inp = request.values["type_inp"]
     fasta_sequence = request.values["fasta_sequence"]
     pos = request.values["pos"]
+    if pos == "":
+        pos = "0"
     mandatory_mutation = request.values["mutation_mandatory"]
     number_of_mutant = request.values["number_of_mutant"]
     matrix = request.values["matrix"]
