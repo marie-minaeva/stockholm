@@ -119,7 +119,7 @@ python3 run_container.py protein example/P27352.fasta 1,2,3 Blosum62 True pfama
 ```
 
 ## Contributing
-We are open to any contributions and colaborations. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. 
+We are open to any contributions and collaborations. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change. 
 
 ## License
 
